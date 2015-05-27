@@ -1,45 +1,37 @@
-import Alt from 'alt';
 import Isoflux from 'cls-isoflux';
+import {Application} from 'marty';
 import Override from 'override-decorator';
 
-const ACTIONS = 'actions';
-const STORE = 'store';
+export default class IsoMarty extends Isoflux {
+  _registrations = [];
 
-export default class IsoAlt extends Isoflux {
-  _allActions = [];
-  _allStores = [];
+  app = this.createProxy(Application);
 
   @Override
   createApp() {
-    const alt = new Alt();
-    this._registerObjects(alt);
+    const marty = new Application();
+    this._registerObjects(marty);
 
-    return alt;
+    return marty;
   }
 
-  _registerObjects(alt) {
-    this._allActions.forEach(Actions => alt.addActions(Actions.name, Actions));
-    this._allStores.forEach(Store => alt.addStore(Store.name, Store));
+  _registerObjects(marty) {
+    this._registrations.forEach(Class => marty.register(Class.name, Class));
   }
 
-  actions(Actions) {
-    this._allActions.push(Actions);
-    return this.createProxy(Actions, {type: ACTIONS});
-  }
-
-  store(Store) {
-    this._allStores.push(Store);
-    return this.createProxy(Store, {type: STORE});
+  register(Class) {
+    this._registrations.push(Class);
+    return this.createProxy(Class);
   }
 
   @Override
-  _getProxiedObject(Class, {type}) {
-    const alt = this.getApp();
+  _getProxiedObject(Class) {
+    const marty = this.getApp();
 
-    if (type === ACTIONS) {
-      return alt.getActions(Class.name);
-    } else if (type === STORE) {
-      return alt.getStore(Class.name);
+    if (Class === Application) {
+      return marty;
+    } else {
+      return marty[Class.name];
     }
   }
 }

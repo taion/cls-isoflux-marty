@@ -1,6 +1,6 @@
 {
   "name": "cls-isoflux-marty",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Marty bindings for cls-isoflux",
   "main": "lib/index.js",
   "scripts": {
@@ -29,15 +29,15 @@
     "babel-eslint": "^3.1.9",
     "chai": "^2.3.0",
     "eslint": "^0.21.2",
-    "marty": "^0.10.0",
+    "marty": "^0.10.0-beta.6",
     "mocha": "^2.2.5",
     "react": "^0.13.3"
   },
   "peerDependencies": {
-    "marty": "^0.10.0"
+    "marty": "^0.10.0-beta.6"
   },
   "dependencies": {
-    "cls-isoflux": "^0.0.1",
+    "cls-isoflux": "^0.1.0",
     "override-decorator": "^1.0.1"
   }
 }
