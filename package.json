@@ -1,6 +1,6 @@
 {
   "name": "cls-isoflux-marty",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Marty bindings for cls-isoflux",
   "main": "lib/index.js",
   "scripts": {
