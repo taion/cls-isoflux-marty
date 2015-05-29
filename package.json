@@ -37,7 +37,7 @@
     "marty": "^0.10.0-beta.6"
   },
   "dependencies": {
-    "cls-isoflux": "^0.1.0",
+    "cls-isoflux-core": "^0.1.1",
     "override-decorator": "^1.0.1"
   }
 }
